@@ -6,12 +6,42 @@ const db = require('./../db')
 
 module.exports = {
     get: (req, res) => {
-        let sql = 'SELECT * FROM user'
+        let sql = 'SELECT * FROM sanpham'
         db.query(sql, (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
+    category: (req, res) => {
+        let sql = 'SELECT * FROM loaisanpham'
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    productByIdLoai: (req, res) => {
+
+        console.log('reqest paging ===> ', req.params)
+        const IDLoai =  req.params.IDLoai
+        const page =  1 //req.params.page
+        const space =  5
+        // xác định vị trí 
+        const limit =(page -1 ) * space;
+        let sql = 'SELECT * FROM sanpham WHERE IDLoai =' + IDLoai;
+        db.query(sql, (err, response) => {
+           if (err) throw err
+           res.json(response)
+       })
+    },
+    productForWonMen: (req, res) => {
+        let sql = 'SELECT * FROM sanpham WHERE IDLoai = 2';
+        db.query(sql, (err, response) => {
+           if (err) throw err
+           res.json(response)
+       })
+    },
+    
+
     detail: (req, res) => {
         let sql = 'SELECT * FROM products WHERE id = ?'
         db.query(sql, [req.params.productId], (err, response) => {
