@@ -23,28 +23,12 @@ import { LayoutModule } from 'app/layout/layout.module';
 
 const appRoutes: Routes = [
     {
-        path        : 'apps',
-        loadChildren: './main/apps/apps.module#AppsModule'
-    },
-    {
-        path        : 'pages',
-        loadChildren: './main/pages/pages.module#PagesModule'
-    },
-    {
-        path        : 'ui',
-        loadChildren: './main/ui/ui.module#UIModule'
-    },
-    {
-        path        : 'documentation',
-        loadChildren: './main/documentation/documentation.module#DocumentationModule'
-    },
-    {
-        path        : 'angular-material-elements',
-        loadChildren: './main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule'
+        path        : '',
+        loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
     },
     {
         path      : '**',
-        redirectTo: 'apps/dashboards/analytics'
+        redirectTo: './pages/dashboards/analytics'
     }
 ];
 
