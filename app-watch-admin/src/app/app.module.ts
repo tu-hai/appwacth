@@ -23,16 +23,12 @@ import { LayoutModule } from 'app/layout/layout.module';
 
 const appRoutes: Routes = [
     {
-        path        : 'apps',
-        loadChildren: './main/apps/apps.module#AppsModule'
-    },
-    {
-        path        : 'pages',
-        loadChildren: './main/pages/pages.module#PagesModule'
+        path        : '',
+        loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
     },
     {
         path      : '**',
-        redirectTo: 'apps/dashboards/analytics'
+        redirectTo: './pages/dashboards/analytics'
     }
 ];
 
