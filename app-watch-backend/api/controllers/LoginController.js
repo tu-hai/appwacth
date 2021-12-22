@@ -23,9 +23,6 @@ module.exports = {
     },
 
     register: (req, res) => {
-        console.log('request',req.body)
-        debugger
-
        // b1: kiểm tra email đã có chưa:
        let sql = 'SELECT * FROM user WHERE Email = ?'
        db.query(sql, [req.body.Email], (err, response) => {

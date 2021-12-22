@@ -36,8 +36,10 @@ module.exports = function(app) {
     // Đơn hàng
     app.route('/order')
     .post(orderCtrl.order)
+
+
     //Chi tiết đơn hàng
-    app.route('/orderdetail')
+    app.route('/order-detail')
     .post(orderCtrl.orderdetail)
 
 };
