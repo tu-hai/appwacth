@@ -56,72 +56,60 @@
                 <!-- ID Column -->
                 <ng-container matColumnDef="id">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
-                    <mat-cell *matCellDef="let product">
-                        <p class="text-truncate">{{product.id}}</p>
+                    <mat-cell *matCellDef=" let i = index">
+                        <p class="text-truncate">{{i + 1}}</p>
                     </mat-cell>
                 </ng-container>
 
                 <!-- Image Column -->
-                <ng-container matColumnDef="image">
-                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <ng-container matColumnDef="Img">
+                    <mat-header-cell *matHeaderCellDef>Hình</mat-header-cell>
                     <mat-cell *matCellDef="let product">
-                        <img class="product-image"
-                             *ngIf="product.featuredImageId" [alt]="product.name"
-                             [src]="product.images[product.featuredImageId].url"/>
-                        <img *ngIf="!product.featuredImageId"
+                        <img width="42" height="42" class="product-image"
+                             *ngIf="product.HinhSP" [alt]="product.TenSanPham"
+                             [src]="product.HinhSP"/>
+                        <img *ngIf="!product.HinhSP"
                              [src]="'assets/images/ecommerce/product-image-placeholder.png'">
                     </mat-cell>
                 </ng-container>
 
                 <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+                <ng-container matColumnDef="TenSanPham">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tên sản phẫm</mat-header-cell>
                     <mat-cell *matCellDef="let product">
-                        <p class="text-truncate">{{product.name}}</p>
+                        <p class="text-truncate">{{product.TenSanPham}}</p>
                     </mat-cell>
                 </ng-container>
 
                 <!-- Category Column -->
-                <ng-container matColumnDef="category">
-                    <mat-header-cell *matHeaderCellDef fxHide mat-sort-header fxShow.gt-md>Category</mat-header-cell>
+                <ng-container matColumnDef="IDLoai">
+                    <mat-header-cell *matHeaderCellDef fxHide mat-sort-header fxShow.gt-md>Loại</mat-header-cell>
                     <mat-cell *matCellDef="let product" fxHide fxShow.gt-md>
                         <p class="category text-truncate">
-                            {{product.categories[0]}}
+                            {{product.IDLoai}}
                         </p>
                     </mat-cell>
                 </ng-container>
 
                 <!-- Price Column -->
-                <ng-container matColumnDef="price">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Price</mat-header-cell>
+                <ng-container matColumnDef="Gia">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Giá</mat-header-cell>
                     <mat-cell *matCellDef="let product" fxHide fxShow.gt-xs>
                         <p class="price text-truncate">
-                            {{product.priceTaxIncl | currency:'USD':'symbol'}}
+                            {{product.Gia | number}}
                         </p>
                     </mat-cell>
                 </ng-container>
 
-                <!-- Quantity Column -->
-                <ng-container matColumnDef="quantity">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Quantity</mat-header-cell>
-                    <mat-cell *matCellDef="let product" fxHide fxShow.gt-sm>
 
-                        <span class="quantity-indicator text-truncate"
-                              [ngClass]="{'red-500':product.quantity <= 5, 'amber-500':product.quantity > 5 && product.quantity <= 25,'green-600':product.quantity > 25}">
-                        </span>
-                        <span>
-                            {{product.quantity}}
-                        </span>
-
-                    </mat-cell>
-                </ng-container>
 
                 <!-- Active Column -->
-                <ng-container matColumnDef="active">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Active</mat-header-cell>
+                <ng-container matColumnDef="MoTaSP">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Mô tả</mat-header-cell>
                     <mat-cell *matCellDef="let product" fxHide fxShow.gt-xs>
-                        <mat-icon *ngIf="product.active" class="active-icon green-600 s-16">check</mat-icon>
-                        <mat-icon *ngIf="!product.active" class="active-icon red-500 s-16">close</mat-icon>
+                        <p class="price text-truncate">
+                            {{product.MoTaSP}}
+                        </p>
                     </mat-cell>
                 </ng-container>
 

@@ -31,9 +31,6 @@ const routes: Routes = [
     {
         path     : 'products',
         component: EcommerceProductsComponent,
-        resolve  : {
-            data: EcommerceProductsService
-        }
     },
     {
         path     : 'products/:id',

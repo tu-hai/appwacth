@@ -20,15 +20,17 @@ import { FakeDbService } from 'app/fake-db/fake-db.service';
 import { AppComponent } from 'app/app.component';
 import { AppStoreModule } from 'app/store/store.module';
 import { LayoutModule } from 'app/layout/layout.module';
+import { PagesModule } from './pages/pages.module';
 
 const appRoutes: Routes = [
+    {path:'',redirectTo:'login', pathMatch: 'full' },
     {
-        path        : '',
-        loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
+        path        : 'login',
+        loadChildren: () => import('./pages/authentication/login/login.module').then(m => m.LoginModule),
     },
     {
         path      : '**',
-        redirectTo: './pages/dashboards/analytics'
+        redirectTo: './pages/dashboards/project'
     }
 ];
 
@@ -63,6 +65,7 @@ const appRoutes: Routes = [
         FuseThemeOptionsModule,
 
         // App modules
+        PagesModule,
         LayoutModule,
         AppStoreModule
     ],

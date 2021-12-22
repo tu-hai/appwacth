@@ -18,6 +18,7 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
 {
     fuseConfig: any;
     navigation: any;
+    user = ''
 
     // Private
     private _fusePerfectScrollbar: FusePerfectScrollbarDirective;
@@ -90,6 +91,7 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        this.user = localStorage.getItem('admin') 
         this._router.events
             .pipe(
                 filter((event) => event instanceof NavigationEnd),

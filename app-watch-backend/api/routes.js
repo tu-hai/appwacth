@@ -3,6 +3,9 @@ module.exports = function(app) {
   const productsCtrl = require('./controllers/ProductsController');
   const loginCtrl = require('./controllers/LoginController');
   const orderCtrl = require('./controllers/orderController');
+  const AdminCtrl =require('./controllers/adminSiteController') 
+  const cors = require('cors')
+  app.use(cors())
 
 
   // Login 
@@ -41,5 +44,17 @@ module.exports = function(app) {
     //Chi tiết đơn hàng
     app.route('/order-detail')
     .post(orderCtrl.orderdetail)
+
+
+    // Admin site
+
+    app.route('/admin-login')
+    .post(AdminCtrl.login)
+
+
+
+
+
+
 
 };

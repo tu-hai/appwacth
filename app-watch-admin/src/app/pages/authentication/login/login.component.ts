@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
+import { LoginServiceService } from './login-service.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector     : 'login',
@@ -23,7 +25,9 @@ export class LoginComponent implements OnInit
      */
     constructor(
         private _fuseConfigService: FuseConfigService,
-        private _formBuilder: FormBuilder
+        private _formBuilder: FormBuilder,
+        private _service: LoginServiceService,
+        private router: Router,
     )
     {
         // Configure the layout
@@ -44,19 +48,24 @@ export class LoginComponent implements OnInit
             }
         };
     }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
     ngOnInit(): void
     {
         this.loginForm = this._formBuilder.group({
-            email   : ['', [Validators.required, Validators.email]],
-            password: ['', Validators.required]
+            Email   : ['', [Validators.required]],
+            Pass: ['', Validators.required]
         });
+    }
+
+    login() {
+        this._service.login(this.loginForm.value).subscribe(next => {
+            if(next !== 'not found') {
+                localStorage.setItem("admin", next);
+                this.router.navigate(["pages/dashboards/project"]);
+            }
+            else {
+                alert("Tên đăng nhập hoặc mật khẩu chưa đúng")
+                localStorage.clear()
+            }
+        })
     }
 }

@@ -5,6 +5,7 @@ import * as shape from 'd3-shape';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { ProjectDashboardService } from './project.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector     : 'project-dashboard',
@@ -18,6 +19,7 @@ export class ProjectDashboardComponent implements OnInit
     projects: any[];
     selectedProject: any;
 
+    user = ''
     widgets: any;
     widget5: any = {};
     widget6: any = {};
@@ -36,7 +38,8 @@ export class ProjectDashboardComponent implements OnInit
      */
     constructor(
         private _fuseSidebarService: FuseSidebarService,
-        private _projectDashboardService: ProjectDashboardService
+        private _projectDashboardService: ProjectDashboardService,
+        private router: Router,
     )
     {
         /**
@@ -142,15 +145,15 @@ export class ProjectDashboardComponent implements OnInit
 
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
     ngOnInit(): void
     {
+        //
+        // Kiểm tra user đã đăng nhập chưa
+        this.user = localStorage.getItem('admin') 
+        if(!this.user) {
+            this.router.navigate(["login"]);
+        }
+
         this.projects = this._projectDashboardService.projects;
         this.selectedProject = this.projects[0];
         this.widgets = this._projectDashboardService.widgets;
@@ -162,10 +165,6 @@ export class ProjectDashboardComponent implements OnInit
         this.widget11.onContactsChanged.next(this.widgets.widget11.table.rows);
         this.widget11.dataSource = new FilesDataSource(this.widget11);
     }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
 
     /**
      * Toggle the sidebar

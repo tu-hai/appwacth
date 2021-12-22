@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { ProjectDashboardModule } from './dashboards/project/project.module';
 import { EcommerceModule } from './e-commerce/e-commerce.module';
 import { RouterModule } from '@angular/router';
-import { ForgotPassword2Module } from './authentication/forgot-password-2/forgot-password-2.module';
 import { ForgotPasswordModule } from './authentication/forgot-password/forgot-password.module';
-import { LoginModule } from './authentication/login/login.module';
 import { RegisterModule } from './authentication/register/register.module';
 import { ResetPasswordModule } from './authentication/reset-password/reset-password.module';
 import { InvoiceCompactModule } from './invoices/compact/compact.module';
@@ -23,10 +21,8 @@ const routes = [
     imports: [
         RouterModule.forChild(routes),
         // Authentication
-        LoginModule,
         RegisterModule,
         ForgotPasswordModule,
-        ForgotPassword2Module,
         ResetPasswordModule,
         // Invoices
         InvoiceModernModule,
