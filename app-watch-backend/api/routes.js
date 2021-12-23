@@ -18,7 +18,14 @@ module.exports = function(app) {
   // Api Sản phẫm
   app.route('/products')
     .get(productsCtrl.get)
-    .post(productsCtrl.store);
+    .post(productsCtrl.store)
+    
+
+  app.route('/products/:ID')
+    .get(productsCtrl.detail)
+    .delete(productsCtrl.delete)
+    .put(productsCtrl.update);
+
 
   // Api loại sản phẫm
   app.route('/categorys')
@@ -30,10 +37,7 @@ module.exports = function(app) {
     .get(productsCtrl.productByIdLoai)
     .post(productsCtrl.store);
 
-  app.route('/user/:productId')
-    .get(productsCtrl.detail)
-    .put(productsCtrl.update)
-    .delete(productsCtrl.delete);
+
 
 
     // Đơn hàng

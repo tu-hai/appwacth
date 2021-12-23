@@ -1,17 +1,14 @@
-import { Product } from './../product/product.model';
+
 import { MatTableDataSource } from '@angular/material/table';
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { DataSource } from '@angular/cdk/collections';
-import { BehaviorSubject, fromEvent, merge, Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-
 import { fuseAnimations } from '@fuse/animations';
-import { FuseUtils } from '@fuse/utils';
+import { SanPhamService } from './products.service';
+import { MatDialog } from '@angular/material';
+import { Product } from './product.model';
+import { ThemSuaSanPhamComponent } from './them-sua-sanpham/them-sua-sanpham';
 
-import { takeUntil } from 'rxjs/internal/operators';
-import { EcommerceProductsService } from './products.service';
 
 @Component({
     selector     : 'e-commerce-products',
@@ -23,7 +20,7 @@ import { EcommerceProductsService } from './products.service';
 export class EcommerceProductsComponent implements OnInit
 {
     dataSource = new MatTableDataSource<Product>([])
-    displayedColumns: string[] = ['id', 'Img','TenSanPham', 'Gia', 'MoTaSP', 'IDLoai'];
+    displayedColumns: string[] = ['id', 'Img','TenSanPham', 'Gia', 'MoTaSP', 'IDLoai', 'thaoTac'];
 
     @ViewChild(MatPaginator, {static: true})
     paginator: MatPaginator;
@@ -34,16 +31,37 @@ export class EcommerceProductsComponent implements OnInit
     @ViewChild('filter', {static: true})
     filter: ElementRef;
 
-
     constructor(
-        private service: EcommerceProductsService
-    )
-    {
+        private service: SanPhamService,
+        public dialog: MatDialog
+    ) {
     }
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
+       this.getDanhSachSanPham()
+    }
+    getDanhSachSanPham() {
         this.service.getProduct().subscribe(next => {
             this.dataSource.data = next
+        })
+    }
+    capNhaHoacThemSanPham(product: Product) {
+        const dialogRef = this.dialog.open(ThemSuaSanPhamComponent, {data: product});
+        
+        dialogRef.afterClosed().subscribe(next => {
+           if(next) {
+               this.getDanhSachSanPham()
+           }
+        });
+    }
+    xoaSanPham(id: number) {
+        this.service.deleteProductById(id).subscribe(next => {
+            if(next === "Deleted") {
+                alert('Đã xóa ')
+                this.getDanhSachSanPham()
+            }
+            else {
+                alert('Chưa thể xóa')
+            }
         })
     }
 }

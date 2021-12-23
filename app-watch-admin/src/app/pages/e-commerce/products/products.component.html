@@ -112,6 +112,17 @@
                         </p>
                     </mat-cell>
                 </ng-container>
+                <ng-container matColumnDef="thaoTac">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Thao tác</mat-header-cell>
+                    <mat-cell *matCellDef="let product" fxHide fxShow.gt-xs>
+                        <button mat-mini-fab color="accent" (click)="xoaSanPham(product.ID)">
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                          <button mat-mini-fab color="accent" (click)="capNhaHoacThemSanPham(product)">
+                            <mat-icon>edit</mat-icon>
+                          </button>
+                    </mat-cell>
+                </ng-container>
 
                 <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
 

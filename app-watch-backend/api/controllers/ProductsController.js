@@ -52,10 +52,10 @@ module.exports = {
     update: (req, res) => {
         let data = req.body;
         let productId = req.params.productId;
-        let sql = 'UPDATE products SET ? WHERE id = ?'
+        let sql = 'UPDATE sanpham SET ? WHERE id = ?'
         db.query(sql, [data, productId], (err, response) => {
             if (err) throw err
-            res.json({message: 'Update success!'})
+            res.json('Updated')
         })
     },
     store: (req, res) => {
@@ -67,10 +67,10 @@ module.exports = {
         })
     },
     delete: (req, res) => {
-        let sql = 'DELETE FROM products WHERE id = ?'
-        db.query(sql, [req.params.productId], (err, response) => {
+        let sql = 'DELETE FROM sanpham WHERE ID = ?'
+        db.query(sql, [Number(req.params.ID)], (err, response) => {
             if (err) throw err
-            res.json({message: 'Delete success!'})
+            res.json("Deleted")
         })
     }
 }

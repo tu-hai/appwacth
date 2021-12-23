@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>{{product && product.ID ? 'Cập nhật sản phẩm' : 'Thêm mới sản phẩm'}}</h2>
+<mat-dialog-content >
+
+<div class="container">
+     <mat-form-field  appearance="outline">
+        <mat-label>Tên sản phẩm</mat-label>
+        <input matInput type="text" [(ngModel)]="product.TenSanPham">
+      </mat-form-field>
+     <mat-form-field  appearance="outline">
+        <mat-label>Giá tiền</mat-label>
+        <input matInput type="text" [(ngModel)]="product.Gia">
+      </mat-form-field>
+     <mat-form-field  appearance="outline">
+        <mat-label>Hình ảnh</mat-label>
+        <input matInput type="text" [(ngModel)]="product.HinhSP">
+      </mat-form-field>
+     <mat-form-field  appearance="outline">
+        <mat-label>Mô tả</mat-label>
+        <textarea matInput rows="4" [(ngModel)]="product.MoTaSP"></textarea>
+      </mat-form-field>
+     <mat-form-field  appearance="outline">
+        <mat-label>Loại sản phẩm</mat-label>
+        <mat-select [(ngModel)]="product.IDLoai">
+            <mat-option  [value]="1">Đồng hồ nam</mat-option>
+            <mat-option  [value]="2">Đồng hồ nữ</mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Đóng</button>
+  <button mat-button color="primary" (click)="capnhat()">Lưu</button>
+</mat-dialog-actions>

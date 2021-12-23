@@ -9,23 +9,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { AgmCoreModule } from '@agm/core';
-
 import { FuseSharedModule } from '@fuse/shared.module';
-import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 import { EcommerceOrderComponent } from './order/order.component';
 import { EcommerceOrderService } from './order/order.service';
 import { EcommerceOrdersComponent } from './orders/orders.component';
 import { EcommerceOrdersService } from './orders/orders.service';
-import { EcommerceProductComponent } from './product/product.component';
-import { EcommerceProductService } from './product/product.service';
 import { EcommerceProductsComponent } from './products/products.component';
-import { EcommerceProductsService } from './products/products.service';
+import { SanPhamService } from './products/products.service';
+import { MatDialogModule} from '@angular/material/dialog';
+import { ThemSuaSanPhamComponent } from './products/them-sua-sanpham/them-sua-sanpham';
 
 const routes: Routes = [
     {
@@ -33,39 +28,19 @@ const routes: Routes = [
         component: EcommerceProductsComponent,
     },
     {
-        path     : 'products/:id',
-        component: EcommerceProductComponent,
-        resolve  : {
-            data: EcommerceProductService
-        }
-    },
-    {
-        path     : 'products/:id/:handle',
-        component: EcommerceProductComponent,
-        resolve  : {
-            data: EcommerceProductService
-        }
-    },
-    {
         path     : 'orders',
         component: EcommerceOrdersComponent,
-        resolve  : {
-            data: EcommerceOrdersService
-        }
     },
     {
         path     : 'orders/:id',
         component: EcommerceOrderComponent,
-        resolve  : {
-            data: EcommerceOrderService
-        }
     }
 ];
 
 @NgModule({
     declarations: [
         EcommerceProductsComponent,
-        EcommerceProductComponent,
+        ThemSuaSanPhamComponent,
         EcommerceOrdersComponent,
         EcommerceOrderComponent
     ],
@@ -82,21 +57,13 @@ const routes: Routes = [
         MatRippleModule,
         MatSelectModule,
         MatSortModule,
-        MatSnackBarModule,
         MatTableModule,
         MatTabsModule,
-
-        NgxChartsModule,
-        AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyD81ecsCj4yYpcXSLFcYU97PvRsE_X8Bx8'
-        }),
-
+        MatDialogModule,
         FuseSharedModule,
-        FuseWidgetModule
     ],
     providers   : [
-        EcommerceProductsService,
-        EcommerceProductService,
+        SanPhamService,
         EcommerceOrdersService,
         EcommerceOrderService
     ]
