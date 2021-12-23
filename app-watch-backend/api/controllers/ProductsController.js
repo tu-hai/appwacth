@@ -50,20 +50,26 @@ module.exports = {
         })
     },
     update: (req, res) => {
-        let data = req.body;
-        let productId = req.params.productId;
-        let sql = 'UPDATE sanpham SET ? WHERE id = ?'
-        db.query(sql, [data, productId], (err, response) => {
+        const data = {
+              ID:         Number(req.body.ID),
+              TenSanPham: req.body.TenSanPham,
+              Gia:        Number(req.body.Gia),
+              HinhSP:     req.body.HinhSP,
+              MoTaSP:     req.body.HinhSP,
+              IDLoai:     Number(req.body.IDLoai)
+          }
+        let sql = 'UPDATE sanpham SET ? WHERE ID = ?'
+        db.query(sql, [data, data.ID], (err, response) => {
             if (err) throw err
-            res.json('Updated')
+            res.json("Updated")
         })
     },
     store: (req, res) => {
         let data = req.body;
-        let sql = 'INSERT INTO products SET ?'
+        let sql = 'INSERT INTO sanpham SET ?'
         db.query(sql, [data], (err, response) => {
             if (err) throw err
-            res.json({message: 'Insert success!'})
+            res.json('Add')
         })
     },
     delete: (req, res) => {

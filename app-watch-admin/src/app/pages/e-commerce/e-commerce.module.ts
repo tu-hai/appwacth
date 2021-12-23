@@ -66,6 +66,9 @@ const routes: Routes = [
         SanPhamService,
         EcommerceOrdersService,
         EcommerceOrderService
+    ],
+    entryComponents: [
+        ThemSuaSanPhamComponent
     ]
 })
 export class EcommerceModule

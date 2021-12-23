@@ -12,34 +12,23 @@
              fxLayout="column" fxLayoutAlign="center center"
              fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
 
-            <!-- APP TITLE -->
-            <div class="logo mb-24 mb-md-0"
-                 fxLayout="row" fxLayoutAlign="start center">
-                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
-                    shopping_basket
-                </mat-icon>
-                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
-                    Products
-                </span>
-            </div>
-            <!-- / APP TITLE -->
-
-            <!-- SEARCH -->
-            <div class="search-wrapper mx-32 mx-md-0">
-                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
-                    <mat-icon>search</mat-icon>
-                    <input #filter placeholder="Search for a product">
+            <!-- Thêm mới -->
+            <div class="logo mb-24 mb-md-0 action-box" >
+                <button mat-mini-fab color="Accent" (click)="capNhaHoacThemSanPham(null)" style="margin-right: 10px;">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                   <!-- SEARCH -->
+                <div class="search-wrapper mx-32 mx-md-0">
+                    <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon>search</mat-icon>
+                        <input #filter placeholder="Tìm kiếm sản phẩm" (keyup)="timkiem($event)">
+                    </div>
                 </div>
-            </div>
             <!-- / SEARCH -->
+            </div>
 
-            <!-- ADD BUTTON -->
-            <button mat-raised-button
-                    [routerLink]="'/apps/e-commerce/products/new'"
-                    class="add-product-button fuse-white mt-24 mt-md-0">
-                <span>ADD NEW PRODUCT</span>
-            </button>
-            <!-- / ADD BUTTON -->
+           
+
 
         </div>
         <!-- / HEADER -->
@@ -128,8 +117,7 @@
 
                 <mat-row *matRowDef="let product; columns: displayedColumns;"
                          class="product"
-                         matRipple
-                         [routerLink]="'/apps/e-commerce/products/'+product.id+'/'+product.handle">
+                         matRipple>
                 </mat-row>
 
             </mat-table>

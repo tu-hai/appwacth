@@ -24,10 +24,14 @@ export class SanPhamService {
                 return this._http.delete(apiUrl + 'products/' + id , { headers: this.sharedHeaders }).pipe(catchError(this.handleError));
         }
         // Cập nhật thông tin cho sản phẩm
-        updateProduct(product: Product): Observable<string> {
-                return this._http.put(apiUrl + 'products/' + product.ID, product , { headers: this.sharedHeaders }).pipe(catchError(this.handleError));
+        updateProduct(product: Product, ID: number): Observable<string> {
+                return this._http.put(apiUrl + 'products/' + ID, product , { headers: this.sharedHeaders }).pipe(catchError(this.handleError));
         } 
-        
+        // Thêm mới sản phẩm
+        postProduct(product: Product) : Observable<string> {
+                return this._http.post(apiUrl + 'products', product , { headers: this.sharedHeaders }).pipe(catchError(this.handleError));
+
+        }
         protected handleError(httpErrorResponse: HttpErrorResponse): Observable<any> {
                 return throwError("");
         }

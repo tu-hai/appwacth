@@ -1,5 +1,5 @@
 export interface Product {
-    ID: number;
+    ID?: number;
     TenSanPham: string;
     Gia: number;
     HinhSP: string;

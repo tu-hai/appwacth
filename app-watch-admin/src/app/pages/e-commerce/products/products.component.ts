@@ -39,6 +39,10 @@ export class EcommerceProductsComponent implements OnInit
     ngOnInit(): void {
        this.getDanhSachSanPham()
     }
+    timkiem(event: Event) {
+        const keyword = (event.target as HTMLInputElement).value;
+        this.dataSource.filter = keyword
+    }
     getDanhSachSanPham() {
         this.service.getProduct().subscribe(next => {
             this.dataSource.data = next
@@ -50,6 +54,7 @@ export class EcommerceProductsComponent implements OnInit
         dialogRef.afterClosed().subscribe(next => {
            if(next) {
                this.getDanhSachSanPham()
+               alert('Thành công!')
            }
         });
     }
