@@ -7,40 +7,20 @@
     <!-- CENTER -->
     <div class="center">
 
-        <!-- HEADER -->
-        <div class="header accent"
-             fxLayout="column" fxLayoutAlign="center center"
-             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
-
-            <!-- Thêm mới -->
-            <div class="logo mb-24 mb-md-0 action-box" >
-                <button mat-mini-fab color="Accent"  style="margin-right: 10px;">
-                    <mat-icon>add</mat-icon>
-                  </button>
-                   <!-- SEARCH -->
-                <div class="search-wrapper mx-32 mx-md-0">
-                    <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
-                        <mat-icon>search</mat-icon>
-                        <input #filter placeholder="Tìm kiếm sản phẩm" (keyup)="timkiem($event)">
-                    </div>
-                </div>
-            <!-- / SEARCH -->
-            </div>
-
-           
-
-
-        </div>
-        <!-- / HEADER -->
+        <!-- <mat-form-field  appearance="outline">
+            <mat-label>Clearable input</mat-label>
+            <input matInput type="text" [(ngModel)]="keyword" (keyup)="timkiem()"  style="background-color: #fff;">
+            <button *ngIf="keyword" matSuffix mat-icon-button aria-label="Clear" (click)="keyword=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field> -->
 
         <!-- CONTENT CARD -->
         <div class="content-card">
 
-            <mat-table class="products-table"
-                       #table [dataSource]="dataSource"
-                       matSort
-                       [@animateStagger]="{value:'50'}"
-                       fusePerfectScrollbar>
+      
+            <mat-table class="products-table" #table [dataSource]="dataSource" matSort 
+                fusePerfectScrollbar>
 
                 <!-- ID Column -->
                 <ng-container matColumnDef="id">
@@ -50,55 +30,54 @@
                     </mat-cell>
                 </ng-container>
 
-                <!-- ['id', 'Name','Email',  'Add', 'Phone', 'thaoTac']; -->
-
+                <!-- ['id', 'Name','Email', 'Add', 'Phone', 'thaoTac']; -->
                 <ng-container matColumnDef="Name">
-                    <mat-header-cell *matHeaderCellDef>Tên khách hàng</mat-header-cell>
-                    <mat-cell *matCellDef="let o">
-                       {{o.Tenkhachhang}}
+                    <mat-header-cell *matHeaderCellDef>Tên</mat-header-cell>
+                    <mat-cell *matCellDef="let user">
+                        {{user.Name}}
                     </mat-cell>
                 </ng-container>
 
+                <!-- Name Column -->
                 <ng-container matColumnDef="Email">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
-                    <mat-cell *matCellDef="let o">
-                        <p class="text-truncate">{{o.Email}}</p>
+                    <mat-cell *matCellDef="let user">
+                        {{user.Email}}
                     </mat-cell>
                 </ng-container>
 
                 <!-- Category Column -->
                 <ng-container matColumnDef="Add">
                     <mat-header-cell *matHeaderCellDef fxHide mat-sort-header fxShow.gt-md>Địa chỉ</mat-header-cell>
-                    <mat-cell *matCellDef="let o" fxHide fxShow.gt-md>
-                       {{o.Diachi}}
+                    <mat-cell *matCellDef="let user" fxHide fxShow.gt-md>
+                        {{user.Address}}
                     </mat-cell>
                 </ng-container>
 
                 <!-- Price Column -->
                 <ng-container matColumnDef="Phone">
                     <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Sdt</mat-header-cell>
-                    <mat-cell *matCellDef="let o" fxHide fxShow.gt-xs>
-                        {{o.Sodienthoai}}
+                    <mat-cell *matCellDef="let user" fxHide fxShow.gt-xs>
+                        {{user.Phone}}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="thaoTac">
                     <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Thao tác</mat-header-cell>
-                    <mat-cell *matCellDef="let o" fxHide fxShow.gt-xs>
-                          <button mat-mini-fab color="accent" (click)="xemChiTiet(o.IDdonhang)">
-                            <mat-icon>assessment</mat-icon>
-                          </button>
+                    <mat-cell *matCellDef="let user" fxHide fxShow.gt-xs>
+                        <button mat-mini-fab color="accent" (click)="xoaUser(user.IDuser)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
                     </mat-cell>
                 </ng-container>
 
                 <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
 
-                <mat-row *matRowDef="let product; columns: displayedColumns;"
-                         class="product"
-                         matRipple>
+                <mat-row *matRowDef="let product; columns: displayedColumns;" class="product" matRipple>
                 </mat-row>
 
             </mat-table>
+
 
             <mat-paginator #paginator
                            [length]="dataSource.filteredData.length"

@@ -8,6 +8,8 @@ const md5 = require('md5')
 
 
 module.exports = {
+
+    // admin đăng nhập
     login: (req, res) => {
         console.log('request',req.body)
         let sql = 'SELECT * FROM admin WHERE Email =  ? AND Pass = ?';
@@ -18,6 +20,36 @@ module.exports = {
             else 
                  res.json("not found")
         })
+    },
+
+    // lấy tất cả danh dách user 
+    users: (req, res) => {
+        let sql = 'SELECT * FROM user';
+         db.query(sql, (err, response) => {
+            if (err) throw err
+            if(response.length > 0) {
+                const result = []
+                for (const u of response) {
+                        delete u.Pass
+                        result.push(u)
+                }
+                res.json(result)
+
+            }
+                
+            else 
+                 res.json("not found")
+        })
+    },
+   
+    // Xóa 1 user
+    delete: (req, res) => {
+        let sql = 'DELETE FROM user WHERE IDuser = ?'
+        db.query(sql, [Number(req.params.IDuser)], (err, response) => {
+            if (err) throw err
+            res.json("Deleted")
+        })
+       
     },
 
     register: (req, res) => {
@@ -46,13 +78,18 @@ module.exports = {
        
     },
 
-}
+    // Lấy đơn hàng
+    orders: (req, res) => {
+        let sql = 'SELECT * FROM donhang join chitietdonhang on donhang.IDdonhang = chitietdonhang.IDdonhang';
+         db.query(sql, (err, response) => {
+            if (err) throw err
+            if(response.length > 0) {
+                res.json(response)
+            }
+                
+            else 
+                 res.json("not found")
+        })
+    },
 
-// app.get("/arrivals/:flightNo", cors(), function(req, res) {
-//     var flightNo = req.params.flightNo;
-//     var minSize = req.query.minSize;
-  
-//     var sql = "SELECT * FROM arrivals WHERE flight = ? AND size >= ?";
-//     connection.query(sql, [ flightNo, minSize ], function(err, rows, fields) {
-//     });
-//   });
+}

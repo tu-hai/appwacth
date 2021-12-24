@@ -81,14 +81,10 @@ $typography: mat-typography-config(
 @import "src/app/layout/components/toolbar/toolbar.theme";
 
 @import "src/app/pages/dashboards/project/project.theme";
-@import "src/app/pages/e-commerce/orders/orders.theme";
 @import "src/app/pages/e-commerce/products/products.theme";
 
 
 @import "src/app/pages/authentication/login/login.theme";
-@import "src/app/pages/authentication/register/register.theme";
-@import "src/app/pages/authentication/reset-password/reset-password.theme";
-@import "src/app/pages/authentication/forgot-password/forgot-password.theme";
 @import "src/app/pages/pricing/style-1/style-1.theme";
 @import "src/app/pages/pricing/style-2/style-2.theme";
 @import "src/app/pages/pricing/style-3/style-3.theme";
@@ -100,14 +96,10 @@ $typography: mat-typography-config(
 
     // Apps
     @include dashboards-project-theme($theme);
-    @include e-commerce-orders-theme($theme);
     @include e-commerce-products-theme($theme);
 
     // Pages
     @include login-theme($theme);
-    @include register-theme($theme);
-    @include reset-password-theme($theme);
-    @include forgot-password-theme($theme);
     @include pricing-style-1-theme($theme);
     @include pricing-style-2-theme($theme);
     @include pricing-style-3-theme($theme);

@@ -15,14 +15,13 @@ module.exports = function(app) {
   app.route('/register')
   .post(loginCtrl.register)
 
-  // Api Sản phẫm
+  // Api lất tất cả Sản phẫm
   app.route('/products')
     .get(productsCtrl.get)
     .post(productsCtrl.store)
     
-
+// api lấy sản phẩm thei ID
   app.route('/products/:ID')
-    .get(productsCtrl.detail)
     .delete(productsCtrl.delete)
     .put(productsCtrl.update);
 
@@ -32,10 +31,9 @@ module.exports = function(app) {
   .get(productsCtrl.category)
   
 
-  // Sản phâm theo IDLoai
+  // Sản phâm theo IDLoai sản phẩm
   app.route('/products/:IDLoai')
     .get(productsCtrl.productByIdLoai)
-    .post(productsCtrl.store);
 
 
 
@@ -55,6 +53,18 @@ module.exports = function(app) {
     app.route('/admin-login')
     .post(AdminCtrl.login)
 
+
+    app.route('/users')
+    .get(AdminCtrl.users)
+
+    app.route('/users/:IDuser')
+    .delete(AdminCtrl.delete)
+
+
+    // Lấy đơn hàng
+
+    app.route('/orders')
+    .get(AdminCtrl.orders)
 
 
 

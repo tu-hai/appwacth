@@ -1,52 +1,95 @@
-<div id="invoice" class="compact page-layout blank" fxLayout="row">
+<div id="invoice" class="modern page-layout blank" fxLayout="row">
 
     <div class="invoice-container">
 
         <!-- INVOICE -->
         <div class="card">
 
-            <div class="header">
-                <div class="invoice-date">{{invoice.date}}</div>
+            <div class="header" fxLayout="row" fxLayoutAlign="space-between start">
 
-                <div fxLayout="row" fxLayoutAlign="space-between stretch">
-                    <div class="client">
-                        <div class="invoice-number" fxLayout="row" fxLayoutAlign="start center">
-                            <span class="title">INVOICE</span>
-                            <span class="number">{{invoice.number}}</span>
-                        </div>
+                <div class="ids" fxLayout="column">
 
-                        <div class="due-date" fxLayout="row" fxLayoutAlign="start center">
-                            <span class="title">DUE DATE</span>
-                            <span class="date">{{invoice.dueDate}}</span>
-                        </div>
+                    <div fxLayout="row" class="seller" fxLayoutAlign="start center">
 
-                        <div class="info">
-                            <div class="title">{{invoice.client.title}}</div>
-                            <div *ngIf="invoice?.client.address" class="address">{{invoice.client.address}}</div>
-                            <div *ngIf="invoice?.client.phone" class="phone">{{invoice.client.phone}}</div>
-                            <div *ngIf="invoice?.client.email" class="email">{{invoice.client.email}}</div>
-                            <div *ngIf="invoice?.client.website" class="website">{{invoice.client.website}}</div>
-                        </div>
-                    </div>
-
-                    <div class="issuer accent" fxLayout="row" fxLayoutAlign="start center">
                         <div class="logo">
                             <img src="assets/images/logos/fuse.svg">
                         </div>
 
-                        <div class="info">
-                            <div class="title">{{invoice.from.title}}</div>
-                            <div *ngIf="invoice?.from.address" class="address">{{invoice.from.address}}</div>
-                            <div *ngIf="invoice?.from.phone" class="phone">{{invoice.from.phone}}</div>
-                            <div *ngIf="invoice?.from.email" class="email">{{invoice.from.email}}</div>
-                            <div *ngIf="invoice?.from.website" class="website">{{invoice.from.website}}</div>
+                        <div class="divider"></div>
+
+                        <div class="detail">
+                            <div class="title">Hóa đơn mua hàng</div>
+                            <div class="address">
+                               Pleiku Gia Lai
+                            </div>
+                            <div  class="phone">
+                                <span>Phone:</span>
+                              09876543
+                            </div>
+                            <div class="email">
+                                <span>Email:</span>
+                              google@googlecom
+                            </div>
+                            <div  class="website">
+                                <span>Web:</span>
+                               shopdongho.com
+                            </div>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="client" fxLayoutAlign="start center">
+                        <div class="label" fxLayout="row" fxLayoutAlign="end center">
+                            <div>CLIENT</div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="detail">
+                            <div class="title"> Hóa đơn 2</div>
+                            <div class="address">
+                                Đà Nẵng
+                            </div>
+                            <div class="phone">
+                                <span>Phone:</span>
+                               09876678
+                            </div>
+                            <div class="email">
+                                <span>Email:</span>
+                               noname@gmail.com
+                            </div>
+                            <div  class="website">
+                                <span>Web:</span>
+                             Không
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <table class="summary">
+                    <tr class="code">
+                        <td class="label">INVOICE</td>
+                        <td class="value">09872h</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">INVOICE DATE</td>
+                        <td class="value">22/22/2022</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">DUE DATE</td>
+                        <td class="value">12/22/2022</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">TOTAL DUE</td>
+                        <td class="value">22,222,22vnd</td>
+                    </tr>
+                </table>
             </div>
 
             <div class="content">
-                <table class="simple invoice-table">
+                <!-- <table class="simple invoice-table">
                     <thead>
                         <tr>
                             <th>SERVICE</th>
@@ -59,29 +102,8 @@
                     <tbody>
                         <tr *ngFor="let service of invoice.services">
                             <td>
-                                <div class="title">
-                                    {{service.title}}
-                                </div>
-                            </td>
-                            <td>
-                                {{service.unit}}
-                            </td>
-                            <td class="text-right">
-                                {{service.unitPrice | currency:'USD':'symbol'}}
-                            </td>
-                            <td class="text-right">
-                                {{service.quantity}}
-                            </td>
-                            <td class="text-right">
-                                {{service.total | currency:'USD':'symbol'}}
-                            </td>
-                        </tr>
-                        <!-- Double the invoice data for demo purposes -->
-                        <tr *ngFor="let service of invoice.services">
-                            <td>
-                                <div class="title">
-                                    {{service.title}}
-                                </div>
+                                <div class="title">{{service.title}}</div>
+                                <div class="detail">{{service.detail}}</div>
                             </td>
                             <td>
                                 {{service.unit}}
@@ -97,9 +119,9 @@
                             </td>
                         </tr>
                     </tbody>
-                </table>
+                </table> -->
 
-                <table class="simple invoice-table-footer">
+                <!-- <table class="simple invoice-table-footer">
                     <tbody>
                         <tr class="subtotal">
                             <td>SUBTOTAL</td>
@@ -118,7 +140,7 @@
                             <td>{{invoice.total | currency:'USD':'symbol'}}</td>
                         </tr>
                     </tbody>
-                </table>
+                </table> -->
             </div>
 
             <div class="footer">
@@ -176,4 +198,5 @@
         <!-- / INVOICE -->
 
     </div>
+
 </div>

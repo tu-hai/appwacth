@@ -1,63 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { apiUrl } from 'app/server';
+import { catchError } from 'rxjs/operators';
+import { Order } from './orders.model';
+
 
 @Injectable()
-export class EcommerceOrdersService implements Resolve<any>
-{
-    orders: any[];
-    onOrdersChanged: BehaviorSubject<any>;
+export class OrdersService {
+        private sharedHeaders = new HttpHeaders();
+        constructor(
+        private _http: HttpClient,
+        ) { 
+        this.sharedHeaders = this.sharedHeaders.set('Content-Type', 'application/json');
+        }
+        // Get danh sách đơn hàng
+        getOrders(): Observable<Order[]> {
+                return this._http.get(apiUrl + 'orders', { headers: this.sharedHeaders }).pipe(catchError(this.handleError));
+        }
 
-    /**
-     * Constructor
-     *
-     * @param {HttpClient} _httpClient
-     */
-    constructor(
-        private _httpClient: HttpClient
-    )
-    {
-        // Set the defaults
-        this.onOrdersChanged = new BehaviorSubject({});
-    }
-
-    /**
-     * Resolver
-     *
-     * @param {ActivatedRouteSnapshot} route
-     * @param {RouterStateSnapshot} state
-     * @returns {Observable<any> | Promise<any> | any}
-     */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
-    {
-        return new Promise((resolve, reject) => {
-
-            Promise.all([
-                this.getOrders()
-            ]).then(
-                () => {
-                    resolve();
-                },
-                reject
-            );
-        });
-    }
-
-    /**
-     * Get orders
-     *
-     * @returns {Promise<any>}
-     */
-    getOrders(): Promise<any>
-    {
-        return new Promise((resolve, reject) => {
-            this._httpClient.get('api/e-commerce-orders')
-                .subscribe((response: any) => {
-                    this.orders = response;
-                    this.onOrdersChanged.next(this.orders);
-                    resolve(response);
-                }, reject);
-        });
-    }
+        protected handleError(httpErrorResponse: HttpErrorResponse): Observable<any> {
+                return throwError("");
+        }
+    
 }

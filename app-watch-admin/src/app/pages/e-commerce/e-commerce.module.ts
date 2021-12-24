@@ -13,14 +13,15 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FuseSharedModule } from '@fuse/shared.module';
-import { EcommerceOrderComponent } from './order/order.component';
-import { EcommerceOrderService } from './order/order.service';
-import { EcommerceOrdersComponent } from './orders/orders.component';
-import { EcommerceOrdersService } from './orders/orders.service';
+import { UserComponent } from './users/users.component';
 import { EcommerceProductsComponent } from './products/products.component';
 import { SanPhamService } from './products/products.service';
 import { MatDialogModule} from '@angular/material/dialog';
 import { ThemSuaSanPhamComponent } from './products/them-sua-sanpham/them-sua-sanpham';
+import { UserService } from './users/users.service';
+import { OrdersComponent } from './orders/orders.component';
+import { OrdersService } from './orders/orders.service';
+import { InvoiceModernComponent } from './invoice/modern.component';
 
 const routes: Routes = [
     {
@@ -28,25 +29,29 @@ const routes: Routes = [
         component: EcommerceProductsComponent,
     },
     {
-        path     : 'orders',
-        component: EcommerceOrdersComponent,
+        path     : 'users',
+        component: UserComponent,
     },
     {
-        path     : 'orders/:id',
-        component: EcommerceOrderComponent,
-    }
+        path     : 'orders',
+        component: OrdersComponent,
+    },
+    {
+        path     : 'invoice',
+        component: InvoiceModernComponent,
+    },
 ];
 
 @NgModule({
     declarations: [
         EcommerceProductsComponent,
         ThemSuaSanPhamComponent,
-        EcommerceOrdersComponent,
-        EcommerceOrderComponent
+        UserComponent,
+        OrdersComponent,
+        InvoiceModernComponent 
     ],
     imports     : [
         RouterModule.forChild(routes),
-
         MatButtonModule,
         MatChipsModule,
         MatExpansionModule,
@@ -64,8 +69,8 @@ const routes: Routes = [
     ],
     providers   : [
         SanPhamService,
-        EcommerceOrdersService,
-        EcommerceOrderService
+        UserService,
+        OrdersService
     ],
     entryComponents: [
         ThemSuaSanPhamComponent

@@ -15,7 +15,7 @@ import { ThemSuaSanPhamComponent } from './them-sua-sanpham/them-sua-sanpham';
     templateUrl  : './products.component.html',
     styleUrls    : ['./products.component.scss'],
     animations   : fuseAnimations,
-    encapsulation: ViewEncapsulation.None
+     encapsulation: ViewEncapsulation.None
 })
 export class EcommerceProductsComponent implements OnInit
 {

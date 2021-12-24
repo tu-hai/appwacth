@@ -37,26 +37,26 @@ export const navigation: FuseNavigation[] = [
                         exactMatch: true
                     },
                     {
-                        id        : 'productDetail',
-                        title     : 'Product Detail',
+                        id        : 'user',
+                        title     : 'user',
                         type      : 'item',
-                        url       : '/pages/e-commerce/products/1/printed-dress',
+                        url       : '/pages/e-commerce/users',
                         exactMatch: true
                     },
                     {
                         id        : 'orders',
-                        title     : 'Orders',
+                        title     : 'orders',
                         type      : 'item',
                         url       : '/pages/e-commerce/orders',
                         exactMatch: true
                     },
                     {
-                        id        : 'orderDetail',
-                        title     : 'Order Detail',
+                        id        : 'invoice',
+                        title     : 'invoice',
                         type      : 'item',
-                        url       : '/pages/e-commerce/orders/1',
+                        url       : '/pages/e-commerce/invoice',
                         exactMatch: true
-                    }
+                    },
                 ]
             },
             {
@@ -102,18 +102,6 @@ export const navigation: FuseNavigation[] = [
                         title: 'Register',
                         type : 'item',
                         url  : '/register'
-                    },
-                    {
-                        id   : 'forgot-password',
-                        title: 'Forgot Password',
-                        type : 'item',
-                        url  : '/forgot-password'
-                    },
-                    {
-                        id   : 'reset-password',
-                        title: 'Reset Password',
-                        type : 'item',
-                        url  : '/reset-password'
                     },
                 ]
             },

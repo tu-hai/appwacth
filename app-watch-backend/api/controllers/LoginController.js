@@ -49,12 +49,3 @@ module.exports = {
     },
 
 }
-
-// app.get("/arrivals/:flightNo", cors(), function(req, res) {
-//     var flightNo = req.params.flightNo;
-//     var minSize = req.query.minSize;
-  
-//     var sql = "SELECT * FROM arrivals WHERE flight = ? AND size >= ?";
-//     connection.query(sql, [ flightNo, minSize ], function(err, rows, fields) {
-//     });
-//   });

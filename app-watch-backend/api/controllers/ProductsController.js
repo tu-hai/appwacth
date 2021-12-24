@@ -20,8 +20,7 @@ module.exports = {
         })
     },
     productByIdLoai: (req, res) => {
-
-        console.log('reqest paging ===> ', req.params)
+        console.log('Gọi api sản phẩm theo lo,ại=>> ', req.params)
         const IDLoai =  req.params.IDLoai
         const page =  1 //req.params.page
         const space =  5
@@ -41,14 +40,6 @@ module.exports = {
        })
     },
     
-
-    detail: (req, res) => {
-        let sql = 'SELECT * FROM products WHERE id = ?'
-        db.query(sql, [req.params.productId], (err, response) => {
-            if (err) throw err
-            res.json(response[0])
-        })
-    },
     update: (req, res) => {
         const data = {
               ID:         Number(req.body.ID),
