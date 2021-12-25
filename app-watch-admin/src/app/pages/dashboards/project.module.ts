@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -43,8 +44,10 @@ const routes: Routes = [
 
         FuseSharedModule,
         FuseSidebarModule,
-        FuseWidgetModule
+        FuseWidgetModule,
+        MatCardModule
     ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     providers   : [
         ProjectDashboardService
     ]

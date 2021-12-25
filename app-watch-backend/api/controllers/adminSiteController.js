@@ -92,4 +92,40 @@ module.exports = {
         })
     },
 
+    //Lấy thông tin chung
+    totalUser: (req, res) => {
+        let sql = 'SELECT * FROM user';
+         db.query(sql, (err, response) => {
+            if (err) throw err
+                res.json(response.length)
+        })
+    },
+    totaProduct: (req, res) => {
+        let sql = 'SELECT * FROM sanpham';
+         db.query(sql, (err, response) => {
+            if (err) throw err
+                res.json(response.length)
+        })
+    },
+    totalOrder: (req, res) => {
+        let sql = 'SELECT * FROM donhang';
+         db.query(sql, (err, response) => {
+            if (err) throw err
+                res.json(response.length)
+        })
+    },
+    totalCategory: (req, res) => {
+        let sql = 'SELECT * FROM loaisanpham';
+         db.query(sql, (err, response) => {
+            if (err) throw err
+                res.json(response.length)
+        })
+    },
+    productMaxOrder: (req, res) => {
+        let sql = 'SELECT  IDchitet,Tensanpham,  MAX(Soluong) as sl FROM chitietdonhang GROUP BY IDchitet order by Soluong desc limit 1';
+         db.query(sql, (err, response) => {
+            if (err) throw err
+                res.json(response[0])
+        })
+    },
 }

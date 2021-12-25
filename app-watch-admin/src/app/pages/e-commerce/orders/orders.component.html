@@ -21,7 +21,7 @@
                 <div class="search-wrapper mx-32 mx-md-0">
                     <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
                         <mat-icon>search</mat-icon>
-                        <input #filter placeholder="Tìm kiếm sản phẩm" (keyup)="timkiem($event)">
+                        <input #filter placeholder="Tìm kiếm đơn hàng" (keyup)="timkiem($event)">
                     </div>
                 </div>
             <!-- / SEARCH -->
@@ -85,7 +85,7 @@
                 <ng-container matColumnDef="thaoTac">
                     <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Thao tác</mat-header-cell>
                     <mat-cell *matCellDef="let o" fxHide fxShow.gt-xs>
-                          <button mat-mini-fab color="accent" (click)="xemChiTiet(o.IDdonhang)">
+                          <button mat-mini-fab color="accent" (click)="xemHoaDon(o)">
                             <mat-icon>assessment</mat-icon>
                           </button>
                     </mat-cell>

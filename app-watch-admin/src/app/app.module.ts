@@ -12,13 +12,13 @@ import 'hammerjs';
 
 import { FuseModule } from '@fuse/fuse.module';
 import { FuseSharedModule } from '@fuse/shared.module';
-import { FuseProgressBarModule, FuseSidebarModule, FuseThemeOptionsModule } from '@fuse/components';
+import { FuseSidebarModule } from '@fuse/components';
 
 import { fuseConfig } from 'app/fuse-config';
 
 import { FakeDbService } from 'app/fake-db/fake-db.service';
 import { AppComponent } from 'app/app.component';
-import { AppStoreModule } from 'app/store/store.module';
+
 import { LayoutModule } from 'app/layout/layout.module';
 import { PagesModule } from './pages/pages.module';
 
@@ -26,7 +26,7 @@ const appRoutes: Routes = [
     {path:'',redirectTo:'login', pathMatch: 'full' },
     {
         path        : 'login',
-        loadChildren: () => import('./pages/authentication/login/login.module').then(m => m.LoginModule),
+        loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule),
     },
     {
         path      : '**',
@@ -59,15 +59,13 @@ const appRoutes: Routes = [
 
         // Fuse modules
         FuseModule.forRoot(fuseConfig),
-        FuseProgressBarModule,
         FuseSharedModule,
         FuseSidebarModule,
-        FuseThemeOptionsModule,
 
         // App modules
         PagesModule,
         LayoutModule,
-        AppStoreModule
+
     ],
     bootstrap   : [
         AppComponent

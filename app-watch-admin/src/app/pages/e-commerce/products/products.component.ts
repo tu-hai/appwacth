@@ -17,7 +17,7 @@ import { ThemSuaSanPhamComponent } from './them-sua-sanpham/them-sua-sanpham';
     animations   : fuseAnimations,
      encapsulation: ViewEncapsulation.None
 })
-export class EcommerceProductsComponent implements OnInit
+export class ProductsComponent implements OnInit
 {
     dataSource = new MatTableDataSource<Product>([])
     displayedColumns: string[] = ['id', 'Img','TenSanPham', 'Gia', 'MoTaSP', 'IDLoai', 'thaoTac'];

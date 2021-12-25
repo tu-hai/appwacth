@@ -7,18 +7,36 @@
     <!-- CENTER -->
     <div class="center">
 
-        <!-- <mat-form-field  appearance="outline">
-            <mat-label>Clearable input</mat-label>
-            <input matInput type="text" [(ngModel)]="keyword" (keyup)="timkiem()"  style="background-color: #fff;">
-            <button *ngIf="keyword" matSuffix mat-icon-button aria-label="Clear" (click)="keyword=''">
-              <mat-icon>close</mat-icon>
-            </button>
-          </mat-form-field> -->
+        <!-- HEADER -->
+        <div class="header accent"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- Thêm mới -->
+            <div class="logo mb-24 mb-md-0 action-box" >
+                <button mat-mini-fab color="Accent" style="margin-right: 10px;">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                   <!-- SEARCH -->
+                <div class="search-wrapper mx-32 mx-md-0">
+                    <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon>search</mat-icon>
+                        <input #filter placeholder="Tìm kiếm người dùng" (keyup)="timkiem($event)">
+                    </div>
+                </div>
+            <!-- / SEARCH -->
+            </div>
+
+           
+
+
+        </div>
+        <!-- / HEADER -->
 
         <!-- CONTENT CARD -->
         <div class="content-card">
 
-      
+        
             <mat-table class="products-table" #table [dataSource]="dataSource" matSort 
                 fusePerfectScrollbar>
 

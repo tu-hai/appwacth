@@ -12,13 +12,13 @@
                     <div fxLayout="row" class="seller" fxLayoutAlign="start center">
 
                         <div class="logo">
-                            <img src="assets/images/logos/fuse.svg">
+                            <img src="assets/images/logos/fuse.jpg">
                         </div>
 
                         <div class="divider"></div>
 
                         <div class="detail">
-                            <div class="title">Hóa đơn mua hàng</div>
+                            <div class="title">Thông tin cửa hàng</div>
                             <div class="address">
                                Pleiku Gia Lai
                             </div>
@@ -28,7 +28,7 @@
                             </div>
                             <div class="email">
                                 <span>Email:</span>
-                              google@googlecom
+                              dongho@gmail.com
                             </div>
                             <div  class="website">
                                 <span>Web:</span>
@@ -39,23 +39,23 @@
 
                     <div fxLayout="row" class="client" fxLayoutAlign="start center">
                         <div class="label" fxLayout="row" fxLayoutAlign="end center">
-                            <div>CLIENT</div>
+                            <div>Thông tin khách hàng</div>
                         </div>
 
                         <div class="divider"></div>
 
                         <div class="detail">
-                            <div class="title"> Hóa đơn 2</div>
+                            <div class="title"> Hóa đơn liên 2</div>
                             <div class="address">
-                                Đà Nẵng
+                                {{order.Diachi}}
                             </div>
                             <div class="phone">
                                 <span>Phone:</span>
-                               09876678
+                              {{order.Sodienthoai}}
                             </div>
                             <div class="email">
                                 <span>Email:</span>
-                               noname@gmail.com
+                               {{order.Email}}
                             </div>
                             <div  class="website">
                                 <span>Web:</span>
@@ -67,23 +67,30 @@
 
                 <table class="summary">
                     <tr class="code">
-                        <td class="label">INVOICE</td>
-                        <td class="value">09872h</td>
+                        <td class="label">Hóa đơn:</td>
+                        <td class="value">{{order.IDdonhang}}</td>
                     </tr>
 
                     <tr>
-                        <td class="label">INVOICE DATE</td>
-                        <td class="value">22/22/2022</td>
-                    </tr>
-
-                    <tr>
-                        <td class="label">DUE DATE</td>
+                        <td class="label">Ngày mua hàng</td>
                         <td class="value">12/22/2022</td>
                     </tr>
+                    <tr>
+                        <td class="label">Tên sản phẩm</td>
+                        <td class="value">{{order.Tensanpham}}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Đơn giá</td>
+                        <td class="value">{{order.Giasp | number}}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Số lượng</td>
+                        <td class="value">{{order.Soluong}}</td>
+                    </tr>
 
                     <tr>
-                        <td class="label">TOTAL DUE</td>
-                        <td class="value">22,222,22vnd</td>
+                        <td class="label">Thành tiền</td>
+                        <td class="value">{{(order.Giasp * order.Soluong) | number}}</td>
                     </tr>
                 </table>
             </div>
@@ -141,22 +148,6 @@
                         </tr>
                     </tbody>
                 </table> -->
-            </div>
-
-            <div class="footer">
-                <div class="note">Please pay within 15 days. Thank you for your business.</div>
-                <div fxLayout="row" fxLayoutAlign="start start">
-                    <div class="logo">
-                        <img src="assets/images/logos/fuse.svg">
-                    </div>
-                    <div class="small-note">
-                        In condimentum malesuada efficitur. Mauris volutpat placerat auctor. Ut ac congue dolor. Quisque
-                        scelerisque lacus sed feugiat fermentum. Cras aliquet facilisis pellentesque. Nunc hendrerit
-                        quam at leo commodo, a suscipit tellus dapibus. Etiam at felis volutpat est mollis lacinia.
-                        Mauris placerat sem sit amet velit mollis, in porttitor ex finibus. Proin eu nibh id libero
-                        tincidunt lacinia et eget eros.
-                    </div>
-                </div>
             </div>
 
             <!--

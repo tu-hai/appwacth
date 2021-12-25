@@ -68,7 +68,17 @@ module.exports = function(app) {
 
 
 
-
+// thông tin chug
+app.route('/totalUser')
+     .get(AdminCtrl.totalUser)
+app.route('/totalProduct')
+     .get(AdminCtrl.totaProduct)
+app.route('/totalOrder')
+     .get(AdminCtrl.totalOrder)
+app.route('/totalCategory')
+     .get(AdminCtrl.totalCategory)
+app.route('/productMaxOrder')
+     .get(AdminCtrl.productMaxOrder)
 
 
 };

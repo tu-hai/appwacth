@@ -45,8 +45,10 @@ export class OrdersComponent implements OnInit
             this.dataSource.data = next
         })
     }
-    xemChiTiet(IDdonhang : number) {
-        this.router.navigateByUrl('/invoice')
+    xemHoaDon(or: Order) {
+        this.router.navigate(['invoice'], {
+            state: {data : or}
+        });
     }
 }
 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
-import { FuseSidebarModule, FuseThemeOptionsModule } from '@fuse/components';
+import { FuseSidebarModule } from '@fuse/components';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { ContentModule } from 'app/layout/components/content/content.module';
 import { NavbarModule } from 'app/layout/components/navbar/navbar.module';
@@ -19,7 +19,6 @@ import { HorizontalLayout1Component } from 'app/layout/horizontal/layout-1/layou
 
         FuseSharedModule,
         FuseSidebarModule,
-        FuseThemeOptionsModule,
         ContentModule,
         NavbarModule,
         QuickPanelModule,

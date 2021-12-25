@@ -3,8 +3,8 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { apiUrl } from 'app/server';
 import { catchError } from 'rxjs/operators';
-import { Product } from '../products/product.model';
 import { User } from './users.model';
+
 
 @Injectable()
 export class UserService {

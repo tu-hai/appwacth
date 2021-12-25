@@ -1,17 +1,22 @@
+
+import { MatTableDataSource } from '@angular/material/table';
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { fuseAnimations } from '@fuse/animations';
+import { MatDialog } from '@angular/material';
 import { User } from './users.model';
 import { UserService } from './users.service';
 
+
 @Component({
-    selector     : 'e-commerce-order',
+    selector     : 'e-commerce-products',
     templateUrl  : './users.component.html',
     styleUrls    : ['./users.component.scss'],
     animations   : fuseAnimations,
-    encapsulation: ViewEncapsulation.None
+     encapsulation: ViewEncapsulation.None
 })
-export class UserComponent implements OnInit
+export class UsersComponent implements OnInit
 {
     dataSource = new MatTableDataSource<User>([])
     displayedColumns: string[] = ['id', 'Name','Email', 'Add', 'Phone', 'thaoTac'];
@@ -25,8 +30,6 @@ export class UserComponent implements OnInit
     @ViewChild('filter', {static: true})
     filter: ElementRef;
 
-    keyword: string = ''
-
     constructor(
         private service: UserService,
         public dialog: MatDialog
@@ -35,9 +38,9 @@ export class UserComponent implements OnInit
     ngOnInit(): void {
        this.getUsers()
     }
-    timkiem() {
-
-        this.dataSource.filter = this.keyword
+    timkiem(event: Event) {
+        const keyword = (event.target as HTMLInputElement).value;
+        this.dataSource.filter = keyword
     }
     getUsers() {
         this.service.getUsers().subscribe(next => {

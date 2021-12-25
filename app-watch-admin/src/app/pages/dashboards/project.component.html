@@ -1,0 +1,61 @@
+<div id="dashboard-project" class="page-layout simple right-sidebar" fxLayout="row">
+
+    <!-- CENTER -->
+    <div class="center" fusePerfectScrollbar>
+
+        <!-- HEADER -->
+        <div class="header accent p-24 pb-0" fxLayout="column" fxLayoutAlign="space-between">
+
+            <div fxLayout="row" fxLayoutAlign="space-between start">
+
+                <span class="mat-display-1 my-0 my-sm-24 welcome-message"
+                      [@animate]="{value:'*',params:{x:'50px'}}">Thông tin chung
+                </span>
+            </div>
+        </div>
+
+
+
+        <!-- // -->
+        <div class="page-layout blank p-24" style="background-color: aliceblue;">
+            <div class="row">
+                <mat-card  class="example-card"
+                    [@animate]="{value:'*', params:{delay:'200ms',scale:'0.2'}}">
+                    <img class="card-icon" src="./../../../assets/images/logos/fuse.jpg">
+                    <span class="title">User : {{totalUser}}</span>
+                </mat-card>
+                <mat-card class="example-card"
+                    [@animate]="{value:'*', params:{delay:'200ms',scale:'0.2'}}">
+                    <img class="card-icon" src="./../../../assets/images/logos/fuse.jpg">
+                    <span class="title">đơn hàng : {{totalOrder}}</span>
+                </mat-card>
+                <mat-card class="example-card" 
+                    [@animate]="{value:'*', params:{delay:'200ms',scale:'0.2'}}">
+                    <img class="card-icon" src="./../../../assets/images/logos/fuse.jpg">
+                    <span class="title">loại sản phẩm : {{totalCategory}}</span>
+                </mat-card>
+            </div>
+            <div class="row">
+                <mat-card class="example-card" 
+                    [@animate]="{value:'*', params:{delay:'200ms',scale:'0.2'}}">
+                    <img class="card-icon" src="./../../../assets/images/logos/fuse.jpg">
+                    <span class="title">sản phẫm: {{totalProduct}}</span>
+                </mat-card>
+                <mat-card class="example-card"
+                    [@animate]="{value:'*', params:{delay:'200ms',scale:'0.2'}}">
+                    <img class="card-icon" src="./../../../assets/images/logos/fuse.jpg">
+                    <span class="title">bán chạy {{productMaxOrder.Tensanpham}}</span>
+                </mat-card>
+                <mat-card class="example-card" 
+                    [@animate]="{value:'*', params:{delay:'200ms',scale:'0.2'}}">
+                    <img class="card-icon" src="./../../../assets/images/logos/fuse.jpg">
+                    <span class="title">Bán nhiều:  {{productMaxOrder.sl}}</span>
+                </mat-card>
+            </div>
+        </div>
+        
+        <!--  -->
+    </div>
+    <!-- / CENTER -->
+
+</div>

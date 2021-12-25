@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
@@ -13,24 +13,25 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FuseSharedModule } from '@fuse/shared.module';
-import { UserComponent } from './users/users.component';
-import { EcommerceProductsComponent } from './products/products.component';
+import { ProductsComponent } from './products/products.component';
 import { SanPhamService } from './products/products.service';
 import { MatDialogModule} from '@angular/material/dialog';
 import { ThemSuaSanPhamComponent } from './products/them-sua-sanpham/them-sua-sanpham';
-import { UserService } from './users/users.service';
 import { OrdersComponent } from './orders/orders.component';
 import { OrdersService } from './orders/orders.service';
 import { InvoiceModernComponent } from './invoice/modern.component';
+import { UserService } from './Users/users.service';
+import { UsersComponent } from './Users/users.component';
+import { MatCardModule} from '@angular/material/card';
 
 const routes: Routes = [
     {
         path     : 'products',
-        component: EcommerceProductsComponent,
+        component: ProductsComponent,
     },
     {
         path     : 'users',
-        component: UserComponent,
+        component: UsersComponent,
     },
     {
         path     : 'orders',
@@ -44,11 +45,12 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [
-        EcommerceProductsComponent,
+        ProductsComponent,
         ThemSuaSanPhamComponent,
-        UserComponent,
+        UsersComponent,
         OrdersComponent,
-        InvoiceModernComponent 
+        InvoiceModernComponent ,
+        UsersComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
@@ -66,12 +68,14 @@ const routes: Routes = [
         MatTabsModule,
         MatDialogModule,
         FuseSharedModule,
+        MatCardModule,
     ],
     providers   : [
         SanPhamService,
         UserService,
         OrdersService
     ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     entryComponents: [
         ThemSuaSanPhamComponent
     ]
